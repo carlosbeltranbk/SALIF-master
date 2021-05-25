@@ -1,0 +1,160 @@
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+    
+    <package name="paqueteSesion" extends="struts-default">
+        <action name="iniciarSesion" class="tmx.salif.gob.controller.ActionLogin" method="iniciarSesion">
+            <result name="loginLicencias" type="redirectAction">licencias</result>
+            <result name="loginProteccionCivil" type="redirectAction">proteccionCivil</result>
+            <result name="loginAdministrador " type="redirectAction">administrador</result>
+            <result name="loginError">/loginSalma/iniciarSesionSalim.jsp</result>
+        </action>
+        
+        <action name="logout" class="tmx.salif.gob.controller.ActionLogin" method="logout">
+            <result name="success">/loginSalma/iniciarSesionSalim.jsp</result>
+        </action>
+        
+        <action name="index">
+            <result>/Login.jsp</result>
+        </action>
+        
+        <!--HISTORIAL DE MOVIEMIENTOS INTERNOS -->
+        <action name="consultarHistorialMovimientos" class="tmx.salif.gob.controller.ActionHistorialMovimientos" method="consultarHistorialMovimientos">
+            <result name="success">/vistas/administrador/historialMovimientosInternos.jsp</result>
+            <result name="error">/vistas/vistaAdmin.jsp</result>
+        </action>
+        
+        <!-- PROTECCION CIVIL ALV -->
+        <action name="proteccionCivill" class="tmx.salif.gob.controller.ActionProteccionCivil" method="consultarInspeccionesNorealizadas">
+            <result name="success">/vistas/proteccionCivil/proteccionCivil.jsp</result> 
+        </action>
+        
+        <action name="proteccionCivilOtro" class="tmx.salif.gob.controller.ActionProteccionCivil" method="cambiarInspeccion">
+            <result name="success" type="redirectAction">proteccionCivil</result>
+        </action>
+        
+        
+        <!-- ACTIONS DE ORDEN DE PAGO -->
+        <action name="OrdenDePago" class="tmx.salif.gob.controller.ActionOrdenDePago" method="OrdenDePago">
+            <result name="success">/vistas/licencias/OrdenDePago.jsp</result>
+        </action>
+        <action name="consultarLicenciaOrdenPagoId" class="tmx.salif.gob.controller.ActionOrdenDePago" method="consultarLicenciaOrdenPagoId">
+            <result name="success">/vistas/licencias/OrdenDePago.jsp</result>
+            <result name="error">/vistas/vistaAdmin.jsp</result>
+        </action>
+        <action name="consultarCuentaContableConcepto" class="tmx.salif.gob.controller.ActionCuentasContables" method="consultarCuentaContableConcepto">
+            <result name="success">/vistas/licencias/OrdenDePago.jsp</result>
+            <result name="error">/vistas/vistaAdmin.jsp</result>
+        </action>
+        <action name="consultarCuentaContableCuenta" class="tmx.salif.gob.controller.ActionCuentasContables" method="consultarCuentaContableCuenta">
+            <result name="success">/vistas/licencias/OrdenDePago.jsp</result>
+            <result name="error">/vistas/vistaAdmin.jsp</result>
+        </action>
+        <action name="consultarCuentasContables" class="tmx.salif.gob.controller.ActionCuentasContables" method="consultarCuentasContables">
+            <result name="success">/vistas/licencias/OrdenDePago.jsp</result>
+            <result name="error">/vistas/vistaAdmin.jsp</result>
+        </action>
+        <action name="consultarCuentasContables" class="tmx.salif.gob.controller.ActionCuentasContables" method="consultarCuentasContables">
+            <result name="success">/vistas/licencias/ConceptosOrdenDePago.jsp</result>
+            <result name="error">/vistas/vistaAdmin.jsp</result>
+        </action>
+        <action name="crearOrdenDePagoId" class="tmx.salif.gob.controller.ActionOrdenDePago" method="crearOrdenDePagoId">
+            <result name="success" >/vistas/licencias/ConceptosOrdenDePago.jsp</result>
+            <result name="error">/vistas/vistaAdmin.jsp</result>
+        </action>
+        <action name="previewConceptos" class="tmx.salif.gob.controller.ActionOrdenDePago" method="previewConceptos">
+            <result name="success">/vistas/licencias/ConfirmarOrdenDePago.jsp</result>
+        </action>
+        <action name="registrarOrdenDePagoConceptos" class="tmx.salif.gob.controller.ActionOrdenDePago" method="registrarOrdenDePagoConceptos">
+            <result name="success">/vistas/licencias/OrdenDePago.jsp</result>
+            <result name="error">/vistas/vistaAdmin.jsp</result>
+        </action>
+        <action name="eliminarOrdenDePago" class="tmx.salif.gob.controller.ActionOrdenDePago" method="eliminarOrdenDePago">
+            <result name="success" >/vistas/licencias/OrdenDePago.jsp</result>
+            <result name="error">/vistas/vistaAdmin.jsp</result>
+        </action>
+        
+          <!-- ACTIONS DE LICENCIAS FUNCIONALES -->
+        <action name="consultarLicenciaId" class="tmx.salif.gob.controller.ActionLicencia" method="consultarLicenciaId">
+            <result name="success">/vistas/licencias/ConsultaDeLicenciasDeFuncionamiento.jsp</result>
+            <result name="error">/vistas/vistaAdmin.jsp</result>
+        </action>
+        
+        <action name="consultModifLicencia" class="tmx.salif.gob.controller.ActionLicencia" method="consultarLicenciaId">
+            <result name="success">/vistas/licencias/ModificarLicenciasDeFuncionamiento.jsp</result>
+            <result name="error">/vistas/vistaAdmin.jsp</result>
+        </action>
+        
+        <action name="modificarLicencia" class="tmx.salif.gob.controller.ActionLicencia" method="modificarLicencia">
+            <result name="success">/vistas/vistaAdmin.jsp</result>
+        </action>
+        
+        <action name="eliminarLicenciaId" class="tmx.salif.gob.controller.ActionLicencia" method="eliminarLicenciaId">
+            <result name="success">/vistas/licencias/consultaEliminar.jsp</result>
+            <result name="error">/vistas/vistaAdmin.jsp</result>
+        </action>
+        
+        <action name="eliminarLicencia" class="tmx.salif.gob.controller.ActionLicencia" method="eliminarLicencia">
+            <result name="success">/vistas/vistaAdmin.jsp</result>
+            <result name="error">/vistas/vistaAdmin.jsp</result>
+        </action>
+        
+        <action name="registroLicencia" class="tmx.salif.gob.controller.ActionLicencia" method="registroLicencia">
+            <result name="success">/vistas/licencias/RegistrarLicenciaDeFuncionamiento.jsp</result>
+            <result name="error">/vistas/vistaAdmin.jsp</result>
+        </action>
+        
+        <action name="generarPadron" class="tmx.salif.gob.controller.ActionLicencia" method="registroLicencia">
+            <result name="success">/vistas/licencias/generarPadron.jsp</result>
+            <result name="error">/vistas/vistaAdmin.jsp</result>
+        </action>
+        
+        <action name="registrarLicencia" class="tmx.salif.gob.controller.ActionLicencia" method="registrarLicencia">
+            <result name="success">/vistas/vistaAdmin.jsp</result>
+            <result name="error">/vistas/vistaAdmin.jsp</result>
+        </action>
+        
+        <action name="solicitarInspeccion" class="tmx.salif.gob.controller.ActionLicencia" method="solicitarInspeccion">
+            <result name="success">/vistas/vistaAdmin.jsp</result>
+            <result name="error">/vistas/vistaAdmin.jsp</result>
+        </action>
+        
+        <!-- ACTIONS DE TARJETONES -->
+        
+        <action name="consultarTarjetonId" class="tmx.salif.gob.controller.ActionTarjeton" method="consultarTarjetonId">
+            <result name="success">/vistas/licencias/DatosDelTarjeton.jsp</result>
+            <result name="error">/vistas/vistaAdmin.jsp</result>
+        </action>
+        
+        <action name="cancelarTarjeton" class="tmx.salif.gob.controller.ActionTarjeton" method="cancelarTarjeton">
+            <result name="success">/vistas/vistaAdmin.jsp</result>
+            <result name="error">/vistas/vistaAdmin.jsp</result>
+        </action>
+        
+        <action name="registrarTarjeton" class="tmx.salif.gob.controller.ActionTarjeton" method="registrarTarjeton">
+            <result name="success" type="redirectAction">consultarTarjetonIdRegis</result>
+            <result name="error">/vistas/vistaAdmin.jsp</result>
+        </action>
+        
+        <action name="consultarTarjetonIdRegis" class="tmx.salif.gob.controller.ActionTarjeton" method="consultarTarjetonIdRegis">
+            <result name="success">/vistas/licencias/DatosDelTarjeton.jsp</result>
+            <result name="error">/vistas/vistaAdmin.jsp</result>
+        </action>
+        
+    </package>
+    
+    <package name="actions-privados" extends="struts-default,packInterceptor">
+        <action name="administrador" class="tmx.salif.gob.controller.ActionLogin" method="administrador">
+            <result name="success" type="redirectAction">consultarHistorialMovimientos</result> 
+        </action>
+       <action name="proteccionCivil" class="tmx.salif.gob.controller.ActionLogin" method="proteccionCivil">
+            <result name="success" type="redirectAction">proteccionCivill</result> 
+        </action>
+        <action name="licencias" class="tmx.salif.gob.controller.ActionLogin" method="licencias">
+            <result name="success" type="redirectAction">OrdenDePago</result> 
+        </action>
+        
+    </package>
+</struts>    
